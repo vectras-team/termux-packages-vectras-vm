@@ -216,9 +216,9 @@ jobs:
         done
 
         if [ ${{ steps.build-info.outputs.docker-build }} == 'false' ]; then
-          NDK=$ANDROID_NDK ANDROID_HOME=$ANDROID_SDK_ROOT ./build-package.sh -I -a ${{ matrix.target_arch }} $packages
+          NDK=$ANDROID_NDK ANDROID_HOME=$ANDROID_SDK_ROOT ./build-package.sh -a ${{ matrix.target_arch }} $packages
         elif [ -n "$packages" ]; then
-          ./scripts/run-docker.sh ./build-package.sh -I -a ${{ matrix.target_arch }} $packages
+          ./scripts/run-docker.sh ./build-package.sh -a ${{ matrix.target_arch }} $packages
         fi
 
     - name: Generate build artifacts
